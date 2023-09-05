@@ -1,0 +1,5 @@
+#!/bin/sh
+
+cd src/
+
+clang main.c -Wall -Wextra -pedantic -std=c17 -o assistant
