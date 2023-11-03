@@ -2,5 +2,9 @@
 
 cd src/
 
-clang main.c -Wall -Wextra -pedantic -std=c17 -o assistant
-mv assistant ../bin/
+for file in *.c; do
+	clang "$file" -Wall -Wextra -pedantic -std=c17 -o "${file::-2}"
+done
+
+mv main ../bin/assistant
+mv dice_roll ../bin/diceroll
