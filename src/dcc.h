@@ -1,30 +1,75 @@
 #ifndef DCC_H
 #define DCC_H
+#include "dice.h"
 
-#define MAX_NAME_LEN 64
-#define NUM_ATTRS	  6
-#define NUM_ALIGNS	  3
+#define MAX_STR_LEN	128 
+#define MAX_INIT_DICE 3
 
 typedef enum {
-	STR,
-	AGI,
-	STA,
-	PER,
-	INT,
-	LUC
-} attr_t;
+	CLERIC,
+	THIEF,
+	WARRIOR,
+	WIZARD,
+	DWARF,
+	ELF,
+	HALFLING,
+	NUM_CLASSES
+} class_t;
+
+typedef enum {
+	STR,	// strength
+	AGI,	// agility
+	STA,	// stamina
+	PER,	// personality
+	INT,	// intelligence
+	LUC,	// luck
+	NUM_ATTRIBUTES	//will automatically be equal to # of attributes
+} attribute_t;
 
 typedef enum {
 	LAWFUL,
 	NEUTRAL,
-	CHAOTIC
-} align_t;
+	CHAOTIC,
+	NUM_ALLIGNMENTS
+} alignment_t;
 
-typedef struct player_char_t {
-	char name[MAX_NAME_LEN];
-	unsigned int attrs[NUM_ATTRS];
-	unsigned int mods[NUM_ATTRS];
-	align_t alignment;
-} player_char_t;
+typedef enum {
+	FORT,
+	REFL,
+	WILL,
+	NUM_SAVES
+} saves_t;
+
+typedef struct {
+	char name[MAX_STR_LEN];
+	unsigned int attributes[NUM_ATTRIBUTES];
+	unsigned int current_hp;
+	unsigned int max_hp;
+	unsigned int armor_class;
+	unsigned int lucky_sign;
+	unsigned int num_initiative_dice;
+	unsigned int movement;
+	int modifiers[NUM_ATTRIBUTES];
+	dice_t health_dice;
+	dice_t initiative_dice[MAX_INIT_DICE];
+	alignment_t alignment;
+} peasant_t;
+
+typedef struct {
+	char name[MAX_STR_LEN];
+} npc_t;
+
+peasant_t dcc_generate_peasant(void);
+
+#endif
+#ifndef DCC_SRC
+#define DCC_SRC
+
+peasant_t dcc_generate_peasant(void){
+	dice_t attribute_dice = {3, 6};
+	peasant_t peasant;
+
+	return peasant;
+};
 
 #endif

@@ -1,26 +1,39 @@
 #ifndef DICE_H
 #define DICE_H
 
-int roll_die(int num_sides);
-int* roll_dice(int num_sides, int num_dice);
+typedef struct {
+	unsigned int num_dice;
+	unsigned int num_sides;
+} dice_t;
+
+dice_t dice_init(unsigned int num_dice, unsigned int num_sides);
+unsigned int* roll_dice(dice_t dice);
 
 #endif
 #ifndef DICE_SRC
 #define DICE_SRC
-#include<stdlib.h>
+#include <stdlib.h>
+#include <assert.h>
 
-int roll_die(int num_sides){
-	return ((rand() % num_sides) + 1);
+dice_t dice_init(unsigned int num_dice, unsigned int num_sides){
+	assert(num_dice  != 0);
+	assert(num_sides != 0);
+
+	dice_t dice;
+	dice.num_dice = num_dice;
+	dice.num_sides = num_sides;
+
+	return dice;
 }
 
-int* roll_dice(int num_dice, int num_sides){
-	int* ret_arr = calloc(num_dice, sizeof(int));
+unsigned int* roll_dice(dice_t dice){
+	srand(time(NULL));
+	unsigned int* results = calloc(dice.num_dice, sizeof(unsigned int));
 	
-	for(int i = 0; i < num_dice; i++){
-		ret_arr[i] = roll_die(num_sides);
-	}
+	for(unsigned int i = 0; i < dice.num_dice; i++)
+		results[i] = (rand() % dice.num_sides) + 1;
 
-	return ret_arr;
+	return results;
 }
 
 #endif
