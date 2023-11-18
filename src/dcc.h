@@ -1,6 +1,6 @@
 #ifndef DCC_H
 #define DCC_H
-#include "dice.h"
+#include "dice/dice.h"
 
 #define MAX_STR_LEN	128 
 #define MAX_INIT_DICE 3

@@ -1,10 +1,13 @@
 #!/bin/sh
 
+echo "Moving to src/ ..."
 cd src/
+./build
+echo "Exiting from src/ ..."
+cd ../
 
-for file in *.c; do
-	clang "$file" -Wall -Wextra -pedantic -std=c17 -o "${file::-2}"
-done
+echo "Moving executables to bin/ ..."
+mv src/diceroll bin/
+mv src/assistant bin/
+echo "Done!"
 
-mv main ../bin/assistant
-mv dice_roll ../bin/diceroll

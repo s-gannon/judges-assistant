@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <time.h>
 
-#include "dice.h"
+#include "dice/dice.h"
 #include "dcc.h"
 
 typedef enum {
@@ -38,8 +38,13 @@ int main(int argc, char** argv){
 			break;
 		case ROLL_PEASANT:
 			break;
+		case ROLL_DICE:
+			printf("Enter the dice you want to roll in the following format:\n\n");
+			printf("> [number of dice]d[number of sides]...\n\n");
+			printf("If you want to roll more than one dice, use a comma separated list\n\n");
+			printf("> ");
 		default:
-			printf("[ERR] Menu choice invalid!\n");
+			printf("[ERROR] Menu choice invalid!\n");
 			break;
 	}
 

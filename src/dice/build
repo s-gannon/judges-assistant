@@ -1,0 +1,8 @@
+#!/bin/sh
+
+EXEC_NAME="diceroll"
+
+echo "Building from $PWD ..."
+clang -Wall -Wextra -pedantic -std=gnu17 dice_roll.c -o $EXEC_NAME
+echo "Moving $EXEC_NAME out of directory ..."
+mv $EXEC_NAME ..

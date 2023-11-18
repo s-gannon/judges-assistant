@@ -22,6 +22,10 @@ int main(int argc, char** argv){
 	dice_t dice;
 	for(int i = 1; i < argc; i++){
 		char del = 'd';
+		if((argv[i][0] < '1') || (argv[i][0] > '9')){
+			printf("[ERROR] Invalid dice format! Exiting...\n");
+			exit(EXIT_FAILURE);
+		}
 		dice = dice_init(atoi(strtok(argv[i], &del)), atoi(strtok(NULL, &del)));
 
 		printf("Rolling %dd%d...\n", dice.num_dice, dice.num_sides);

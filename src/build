@@ -1,0 +1,17 @@
+#!/bin/sh
+
+for dir in */; do
+	if [ -d "$dir" ]; then
+		echo "Moving to $dir ..."
+		cd $dir
+		./build
+		echo "Exiting $dir ..."
+		cd ..
+	fi
+done
+
+EXEC_NAME="assistant"
+
+echo "Building from $PWD ..."
+clang -Wall -Wextra -pedantic -std=gnu17 main.c -o $EXEC_NAME
+
