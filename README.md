@@ -10,4 +10,4 @@ I am currently working on a utility specifically for Dungeon Crawl Classics (DCC
 Adding support for other tabletops. Dungeons & Dragons is a popular one, but may attempt to hit some lesser known ones as they probably don't have systems like this in place.
 
 ## Resources
-Thank you to [Purple Sorcerer]{https://www.purplesorcerer.com/} for the inspiration as well as their output for the standard DCC occupation table.
+Thank you to [Purple Sorcerer](https://www.purplesorcerer.com/) for the inspiration as well as their output for the standard DCC occupation table.
